@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
  * https://www.youtube.com/watch?v=8eWbSN2T8TE&t=25s **/
 
 
-public class EnemyAI : MonoBehaviour
+public class PatrolMovement : MonoBehaviour
 {
     public float speed;
     public float startWaitTime;
     private float waitTime;
 
-    public Transform[] moveSpots;
+    public Transform[] moveSpots = null;
     private int listPos;
     private Quaternion qRotate; //quaternion rotate
 
@@ -24,31 +24,39 @@ public class EnemyAI : MonoBehaviour
         //listPos = Random.Range(0, moveSpots.Length); //select a random waypoint
         listPos = 0;
         qRotate = transform.rotation;
+        
+        if (moveSpots == null)
+        {
+            moveSpots = new Transform[] { };
+        }
 
     }
 
     // Update is called once per frame
-    void Update()
+    public void move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, moveSpots[listPos].position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, moveSpots[listPos].position) < 0.2f)
+        if (moveSpots.Length >= 1)
         {
+            transform.position = Vector2.MoveTowards(transform.position, moveSpots[listPos].position, speed * Time.deltaTime);
 
-            if (waitTime <= 0)
+            if (Vector2.Distance(transform.position, moveSpots[listPos].position) < 0.2f)
             {
-                //listPos = Random.Range(0, moveSpots.Length);
-                listPos += 1;
-                if (listPos > (moveSpots.Length - 1))
+
+                if (waitTime <= 0)
                 {
-                    //parse through array when end of array is reached
-                    listPos = 0;
+                    //listPos = Random.Range(0, moveSpots.Length);
+                    listPos += 1;
+                    if (listPos > (moveSpots.Length - 1))
+                    {
+                        //parse through array when end of array is reached
+                        listPos = 0;
+                    }
+                    waitTime = startWaitTime;
                 }
-                waitTime = startWaitTime;
-            }
-            else
-            {
-                waitTime -= Time.deltaTime;
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
             }
         }
     }
