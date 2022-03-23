@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7318589356067709972}
   - component: {fileID: 8042939231613111657}
   - component: {fileID: 8314586268493601705}
+  - component: {fileID: 4031477137677670296}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -192,6 +193,7 @@ MonoBehaviour:
   - {fileID: 944515637053305393}
   - {fileID: 8932737625228854792}
   - {fileID: 1053941290506342686}
+  movementController: {fileID: 4031477137677670296}
 --- !u!114 &8042939231613111657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,3 +223,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 3007113451130948899}
+--- !u!114 &4031477137677670296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514258845443847102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 804c4d9f60234cb4aac397a45cc2a533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  startWaitTime: 1
+  moveSpots: []

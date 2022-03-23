@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PatrolState : State
 {
+    public PatrolMovement movementController;
+
     // Start is called before the first frame update
     void Start()
     {
         executeEntryActions += enterPatrolState;
-        // executeStateActions += patrolStateAction;
+        executeStateActions += patrolStateAction;
         executeExitActions += exitPatrolState;
     }
 
@@ -19,7 +21,11 @@ public class PatrolState : State
 
     void patrolStateAction()
     {
-        Debug.Log("[" + gameObject.name + "] is currently in Patrol state");
+        // Debug.Log("[" + gameObject.name + "] is currently in Patrol state");
+        if (movementController != null)
+        {
+            movementController.move();
+        }
     }
 
     void exitPatrolState()
