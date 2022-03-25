@@ -21,8 +21,8 @@ public class SeesPlayer : Transition
 
     public override bool isTriggered()
     {
-        canSeePlayer();
-        return seePlayerDebug;
+        return canSeePlayer();
+        // return seePlayerDebug;
     }
 
     bool canSeePlayer()
