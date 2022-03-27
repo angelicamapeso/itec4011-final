@@ -177,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetState: {fileID: 8314586268493601705}
   seePlayerDebug: 0
+  distanceToSee: 5
 --- !u!114 &7318589356067709972
 MonoBehaviour:
   m_ObjectHideFlags: 0
