@@ -592,6 +592,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 460033900}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &487464433 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5209950423047543939, guid: b4f281450518d3e4c982aa5e1285cfa8,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927005631707118937}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &495004011
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1808,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1662150899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 65504554639406024, guid: bf49efb4e7c226044900a6f68cf67f6a,
+    type: 3}
+  m_PrefabInstance: {fileID: 65504555057949326}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1668717415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2526,6 +2538,71 @@ Transform:
   m_Father: {fileID: 1646574310}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2033229301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2033229303}
+  - component: {fileID: 2033229302}
+  - component: {fileID: 2033229304}
+  m_Layer: 0
+  m_Name: Grid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2033229302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033229301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9371fd75d986f51448c12a0296c40abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {fileID: 2033229303}
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 8
+  gridWorldSize: {x: 20, y: 12}
+  nodeRadius: 0.5
+  distance: 0
+--- !u!4 &2033229303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033229301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2033229304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033229301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea22b6d9c61a784fb1e413a3eb0dfe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPos: {fileID: 487464433}
+  endPos: {fileID: 1662150899}
 --- !u!1001 &2082576358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2736,7 +2813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2141917844}
   - component: {fileID: 2141917843}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Safe Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
