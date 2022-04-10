@@ -11,6 +11,7 @@ public class StateMachine : MonoBehaviour
     void Start()
     {
         currentState = initialState;
+        currentState.executeEntryActions?.Invoke();
     }
 
     // Update is called once per frame

@@ -20,8 +20,8 @@ GameObject:
   - component: {fileID: 8042939231613111657}
   - component: {fileID: 8314586268493601705}
   - component: {fileID: 4031477137677670296}
-  - component: {fileID: 6106514829470596853}
   - component: {fileID: 452523671123253245}
+  - component: {fileID: 6106514829470596853}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -196,7 +196,9 @@ MonoBehaviour:
   - {fileID: 944515637053305393}
   - {fileID: 8932737625228854792}
   - {fileID: 1053941290506342686}
-  movementController: {fileID: 4031477137677670296}
+  rotationTime: 1
+  movementSpeed: 5
+  stopThreshold: 0.2
 --- !u!114 &8042939231613111657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +228,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitions:
   - {fileID: 3007113451130948899}
+  rotationTime: 0.1
+  movementSpeed: 3.5
+  stopThreshold: 1
 --- !u!114 &4031477137677670296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +245,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   startWaitTime: 1
-  moveSpots: []
+  stopThreshold: 0.2
+  rotationTime: 1
+  patrolPoints: {fileID: 0}
+  currentPath: []
+--- !u!114 &452523671123253245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514258845443847102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c2483ebeea0c34aa92ea45470dd291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotation: 360
+  targetRadius: 5
+  slowRadius: 45
+  timeToTarget: 1
+  rotation: 0
 --- !u!114 &6106514829470596853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,21 +344,3 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &452523671123253245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514258845443847102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6c2483ebeea0c34aa92ea45470dd291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRotation: 360
-  targetRadius: 5
-  slowRadius: 45
-  timeToTarget: 1
-  rotation: 0
-  angularAcceleration: 0

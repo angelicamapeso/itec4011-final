@@ -18,7 +18,7 @@ public class EnemyRotation : MonoBehaviour
     // change in orientation (deg/sec)
     public float rotation = 0;
     // change in rotation (deg/sec/sec)
-    public float angularAcceleration = 0;
+    private float angularAcceleration = 0;
 
     // PERFORM CALCULATIONS IF TARGET ORIENTATION SET:
     public float? targetOrientation = null;
@@ -50,8 +50,13 @@ public class EnemyRotation : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, orientation);
     }
 
-    public void rotateTowards(Vector2 point)
+    public void rotateTowards(Vector2 point, float? newTimeToTarget = null)
     {
+        if (newTimeToTarget != null)
+        {
+            timeToTarget = (float) newTimeToTarget;
+        }
+
         float totalRotation = Mathf.Atan2(
             point.y - transform.position.y,
             point.x - transform.position.x) * Mathf.Rad2Deg;

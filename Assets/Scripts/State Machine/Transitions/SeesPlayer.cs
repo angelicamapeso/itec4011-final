@@ -47,7 +47,7 @@ public class SeesPlayer : Transition
     {
         Vector2 toPlayer = (player.transform.position - transform.position).normalized;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, distanceToSee, LayerMask.GetMask("Collidable"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, distanceToSee, LayerMask.GetMask("Collidable", "Player"));
 
         if (hit.collider != null)
         {

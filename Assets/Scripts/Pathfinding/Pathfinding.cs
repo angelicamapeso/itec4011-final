@@ -10,8 +10,6 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     protected static AStarGrid grid;
-    public Transform startPos;
-    public Transform endPos;
 
     // Start is called before the first frame update
     void Start()
@@ -19,105 +17,101 @@ public class Pathfinding : MonoBehaviour
         grid = GetComponent<AStarGrid>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        FindPath(new Vector2(startPos.position.x, startPos.position.y), new Vector2(endPos.position.x, endPos.position.y));
-    }
-
     public static List<Node> FindPath(Vector2 startPos, Vector2 endPos)
     {
-        Node startNode = grid.NodeFromWorldPosition(startPos);
-        Node targetNode = grid.NodeFromWorldPosition(endPos);
+        if (grid != null)
+        {
+            Node startNode = grid.NodeFromWorldPosition(startPos);
+            Node targetNode = grid.NodeFromWorldPosition(endPos);
 
-        if (startNode != null && targetNode != null)
-        {   
-            // For A* Calculations
-            List<Node> openList = new List<Node>();
-            List<Node> closedList = new List<Node>();
-            
-            // To Store new objects created from the grid
-            List<Node> consideredNodes = new List<Node>();
-            consideredNodes.Add(startNode);
-            consideredNodes.Add(targetNode);
-
-            // To store the final path
-            List<Node> finalPath = new List<Node>();
-
-            // Start A* Calculations
-            openList.Add(startNode);
-
-            while (openList.Count > 0)
+            if (startNode != null && targetNode != null)
             {
-                Node currentNode = openList[0];
+                // For A* Calculations
+                List<Node> openList = new List<Node>();
+                List<Node> closedList = new List<Node>();
 
-                // Get Node in the Closer Direction to target
-                for (int i = 1; i < openList.Count; i++)
+                // To Store new objects created from the grid
+                List<Node> consideredNodes = new List<Node>();
+                consideredNodes.Add(startNode);
+                consideredNodes.Add(targetNode);
+
+                // To store the final path
+                List<Node> finalPath = new List<Node>();
+
+                // Start A* Calculations
+                openList.Add(startNode);
+
+                while (openList.Count > 0)
                 {
-                    if (openList[i].FCost <= currentNode.FCost && openList[i].hCost < currentNode.hCost)
+                    Node currentNode = openList[0];
+
+                    // Get Node in the Closer Direction to target
+                    for (int i = 1; i < openList.Count; i++)
                     {
-                        currentNode = openList[i];
-                    }
-                }
-
-                // Finish processing this node
-                openList.Remove(currentNode);
-
-                if (!NodeIsInList(closedList, currentNode))
-                {
-                    closedList.Add(currentNode);
-                }
-
-                // If Reached the end, get the final path
-                if (currentNode == targetNode)
-                {
-                    finalPath = GetFinalPath(startNode, targetNode);
-                    break;
-                }
-
-                List<Node> neighborNodes = grid.GetNeighboringNodes(currentNode);
-                for (int neighborIndex = 0; neighborIndex < neighborNodes.Count; neighborIndex++)
-                {
-                    // If this node was previously considered, get the reference for it or add it
-                    if (NodeIsInList(consideredNodes, neighborNodes[neighborIndex]))
-                    {
-                        neighborNodes[neighborIndex] = GetNodeFromList(consideredNodes, neighborNodes[neighborIndex].id);
-                    } else
-                    {
-                        consideredNodes.Add(neighborNodes[neighborIndex]);
-                    }
-                }
-
-                // Get neighbor references
-                foreach (Node neighborNode in neighborNodes)
-                {
-                    if (neighborNode.isWall || NodeIsInList(closedList, neighborNode))
-                    {
-                        continue;
-                    }
-
-                    int moveCost = currentNode.gCost + GetManhattenDistance(currentNode, neighborNode);
-
-                    if (moveCost < neighborNode.gCost || !NodeIsInList(openList,neighborNode))
-                    {
-                        neighborNode.gCost = moveCost;
-                        neighborNode.hCost = GetManhattenDistance(neighborNode, targetNode);
-                        neighborNode.parent = currentNode;
-
-                        if (!NodeIsInList(openList, neighborNode))
+                        if (openList[i].FCost <= currentNode.FCost && openList[i].hCost < currentNode.hCost)
                         {
-                            openList.Add(neighborNode);
+                            currentNode = openList[i];
+                        }
+                    }
+
+                    // Finish processing this node
+                    openList.Remove(currentNode);
+
+                    if (!NodeIsInList(closedList, currentNode))
+                    {
+                        closedList.Add(currentNode);
+                    }
+
+                    // If Reached the end, get the final path
+                    if (currentNode == targetNode)
+                    {
+                        finalPath = GetFinalPath(startNode, targetNode);
+                        break;
+                    }
+
+                    List<Node> neighborNodes = grid.GetNeighboringNodes(currentNode);
+                    for (int neighborIndex = 0; neighborIndex < neighborNodes.Count; neighborIndex++)
+                    {
+                        // If this node was previously considered, get the reference for it or add it
+                        if (NodeIsInList(consideredNodes, neighborNodes[neighborIndex]))
+                        {
+                            neighborNodes[neighborIndex] = GetNodeFromList(consideredNodes, neighborNodes[neighborIndex].id);
+                        }
+                        else
+                        {
+                            consideredNodes.Add(neighborNodes[neighborIndex]);
+                        }
+                    }
+
+                    // Get neighbor references
+                    foreach (Node neighborNode in neighborNodes)
+                    {
+                        if (neighborNode.isWall || NodeIsInList(closedList, neighborNode))
+                        {
+                            continue;
+                        }
+
+                        int moveCost = currentNode.gCost + GetManhattenDistance(currentNode, neighborNode);
+
+                        if (moveCost < neighborNode.gCost || !NodeIsInList(openList, neighborNode))
+                        {
+                            neighborNode.gCost = moveCost;
+                            neighborNode.hCost = GetManhattenDistance(neighborNode, targetNode);
+                            neighborNode.parent = currentNode;
+
+                            if (!NodeIsInList(openList, neighborNode))
+                            {
+                                openList.Add(neighborNode);
+                            }
                         }
                     }
                 }
-            }
 
-            return finalPath;
+                return finalPath;
+            }
         }
-        else
-        {
-            return null;
-        }
+
+        return null;
     }
 
     public static List<Node> GetFinalPath(Node startNode, Node endNode)
