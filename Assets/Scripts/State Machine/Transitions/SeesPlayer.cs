@@ -5,7 +5,7 @@ using UnityEngine;
 public class SeesPlayer : Transition
 {
     public bool seePlayerDebug = false;
-
+    public float distanceToSee = 10f;
     private GameObject player = null;
 
     private void Start()
@@ -47,7 +47,7 @@ public class SeesPlayer : Transition
     {
         Vector2 toPlayer = (player.transform.position - transform.position).normalized;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, Mathf.Infinity, LayerMask.GetMask("Collidable", "Player"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, distanceToSee, LayerMask.GetMask("Collidable"));
 
         if (hit.collider != null)
         {
