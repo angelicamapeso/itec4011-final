@@ -17,6 +17,8 @@ public class PatrolMovement : MonoBehaviour
     private int listPos;
     private Quaternion qRotate; //quaternion rotate
 
+    private EnemyRotation enemyRotation = null;
+
     // Use this for initialization
     void Start()
     {
@@ -29,6 +31,8 @@ public class PatrolMovement : MonoBehaviour
         {
             moveSpots = new Transform[] { };
         }
+
+        enemyRotation = gameObject.GetComponent<EnemyRotation>();
 
     }
 
@@ -52,6 +56,10 @@ public class PatrolMovement : MonoBehaviour
                         listPos = 0;
                     }
                     waitTime = startWaitTime;
+                    if (enemyRotation != null)
+                    {
+                        enemyRotation.rotateTowards(moveSpots[listPos].position);
+                    }
                 }
                 else
                 {
