@@ -153,6 +153,55 @@ Transform:
   m_Father: {fileID: 1646574310}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &90765201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90765203}
+  - component: {fileID: 90765202}
+  m_Layer: 0
+  m_Name: SoundTrailBit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &90765202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90765201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fbffa3e0d9a724780de2da40b2a1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundTrailBitPrefab: {fileID: 4717870895629430401, guid: 344a7060ffd243f44a9d864d5342cd7b,
+    type: 3}
+  playerObject: {fileID: 65504554639406026, guid: bf49efb4e7c226044900a6f68cf67f6a,
+    type: 3}
+  respawnTime: 0.5
+  bitLifeSpan: 0.8
+--- !u!4 &90765203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90765201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.8531728, y: -1.0238323, z: -1.9534101}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145613229
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,7 +707,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2907,6 +2956,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_GravityScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338534401073997174, guid: bf49efb4e7c226044900a6f68cf67f6a,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338534401073997174, guid: bf49efb4e7c226044900a6f68cf67f6a,
+        type: 3}
+      propertyPath: minSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2338534401073997174, guid: bf49efb4e7c226044900a6f68cf67f6a,
         type: 3}

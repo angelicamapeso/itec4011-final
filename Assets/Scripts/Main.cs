@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    public float speed;
-    private float minSpeed;
+    public float minSpeed;
     public float maxSpeed;
+    public float currentSpeed;
 
     public LineRenderer lineRenderer = null;
     public float soundRadius = 0;
@@ -19,9 +19,6 @@ public class Main : MonoBehaviour
 
     void Start()
     {
-        //pull info from the characters Animator onto animator
-        //animator = GetComponent<Animator>();
-        //Application.targetFrameRate = 200;
     }
 
     // Update is called once per frame
@@ -39,13 +36,13 @@ public class Main : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 2);
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 2);
 
@@ -53,15 +50,32 @@ public class Main : MonoBehaviour
 
         if ((Input.GetAxisRaw("Vertical") > 0))
         {
-            transform.Translate(Vector3.up * speed * Time.deltaTime);
+            transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 0);
         }
         else if (Input.GetAxisRaw("Vertical") < 0)
         {
-            transform.Translate(Vector3.down * speed * Time.deltaTime);
+            transform.Translate(Vector3.down * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 1);
+        }
+
+        //acceleration
+        if ((Input.GetKey("up")) || (Input.GetKey("down")) || (Input.GetKey("left")) || Input.GetKey("right"))
+        {
+            if (currentSpeed < maxSpeed)
+            {
+                currentSpeed += Time.deltaTime * 5.0f;
+            }
+            else if (currentSpeed >= maxSpeed)
+            {
+                currentSpeed = maxSpeed;
+            }
+        }
+        else
+        {
+            currentSpeed = 0;
         }
     }
 
