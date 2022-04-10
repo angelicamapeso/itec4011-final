@@ -5,8 +5,9 @@ using UnityEngine;
 public class InvestigateState : State
 {
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
         executeEntryActions += enterInvestigateState;
         // executeStateActions += investigateStateAction;
         executeExitActions += exitInvestigateState;

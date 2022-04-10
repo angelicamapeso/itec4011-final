@@ -5,27 +5,19 @@ using UnityEngine;
 public class HearsSound : Transition
 {
     public bool hearPlayerDebug = false;
-    private GameObject player = null;
     private Main playerScript = null;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        base.Start();
+
+        playerScript = sm.player.GetComponent<Main>();
+        if (playerScript == null)
         {
-            Main script = player.GetComponent<Main>();
-            if (script != null)
-            {
-                playerScript = script;
-            } else
-            {
-                Debug.LogError("'Main' script not found on Player.");
-            }
-        } else
-        {
-            Debug.LogError("No player found in scene.");
+            Debug.LogError("'Main' script not found on Player");
         }
+
         executeTransitionActions += transitionAction;
     }
 
@@ -41,9 +33,9 @@ public class HearsSound : Transition
 
     bool canHearPlayer()
     {
-        if (player != null)
+        if (sm.player != null && playerScript != null)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+            float distanceToPlayer = Vector2.Distance(transform.position, sm.player.transform.position);
             if (distanceToPlayer <= playerScript.soundRadius)
             {
                 return true;

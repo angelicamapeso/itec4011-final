@@ -10,4 +10,15 @@ public abstract class Transition : MonoBehaviour
     public TransitionActions executeTransitionActions;
 
     public abstract bool isTriggered();
+
+    protected StateMachine sm = null;
+
+    protected void Start()
+    {
+        sm = gameObject.GetComponent<StateMachine>();
+        if (sm == null)
+        {
+            Debug.LogError("No 'StateMachine' script on [" + gameObject.name + "]");
+        }
+    }
 }

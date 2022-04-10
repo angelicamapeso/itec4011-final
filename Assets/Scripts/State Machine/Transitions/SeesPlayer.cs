@@ -5,69 +5,24 @@ using UnityEngine;
 public class SeesPlayer : Transition
 {
     public bool seePlayerDebug = false;
-    public float distanceToSee = 10f;
-    private GameObject player = null;
 
-    private void Start()
+    new void Start()
     {
-        executeTransitionActions += transitionAction;
+        base.Start();
 
-        player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null)
-        {
-            Debug.LogError("No player is present in the scene!");
-        }
+        executeTransitionActions += transitionAction;
     }
 
     public override bool isTriggered()
     {
-        return canSeePlayer();
-        // return seePlayerDebug;
-    }
-
-    bool canSeePlayer()
-    {
-        return (player != null && isPlayerInFront() && !isPlayerBlocked());
-    }
-
-    bool isPlayerInFront()
-    {
-        Vector2 forward = transform.TransformDirection(Vector2.up);
-        Vector2 toPlayer = player.transform.position - transform.position;
-
-        if (Vector2.Dot(forward, toPlayer) > 0 && Vector2.Angle(forward, toPlayer) < 45)
+        if (sm != null && sm.enemySight != null)
         {
-            return true;
+            return sm.enemySight.canSeePlayer();
         }
 
         return false;
+        // return seePlayerDebug;
     }
-
-    bool isPlayerBlocked()
-    {
-        Vector2 toPlayer = (player.transform.position - transform.position).normalized;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, toPlayer, distanceToSee, LayerMask.GetMask("Collidable", "Player"));
-
-        if (hit.collider != null)
-        {
-            Vector3 hitPoint = new Vector3(hit.point.x, hit.point.y);
-
-            if (hit.collider.tag != "Player")
-            {
-                Debug.DrawRay(transform.position, hitPoint - transform.position, Color.blue);
-                return true;
-            } else
-            {
-                Debug.DrawRay(transform.position, hitPoint - transform.position, Color.red);
-                return false;
-            }
-            
-        }
-
-        return true;
-    }
-
     void transitionAction()
     {
         seePlayerDebug = false;
