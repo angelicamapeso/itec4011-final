@@ -6644,6 +6644,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1053941290506342686, guid: b4f281450518d3e4c982aa5e1285cfa8,
+        type: 3}
+      propertyPath: distanceToSee
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4031477137677670296, guid: b4f281450518d3e4c982aa5e1285cfa8,
         type: 3}
       propertyPath: moveSpots.Array.size
