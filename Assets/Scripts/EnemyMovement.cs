@@ -159,11 +159,4 @@ public class EnemyMovement : MonoBehaviour
         setPath(patrolPoints.waypoints);
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision) //scene change here
-    //{
-    //    if (collision.gameObject.name.Equals("Player"))
-    //    {
-    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //    }
-    //}
 }

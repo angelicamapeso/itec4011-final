@@ -21,7 +21,7 @@ public class LoseGame : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            SceneManager.LoadScene(2); //lost game
+            SceneManager.LoadScene(3); //lost game
         }
     }
 }

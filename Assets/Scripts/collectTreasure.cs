@@ -34,7 +34,7 @@ public class collectTreasure : MonoBehaviour
         {
             if (hasTreasure)
             {
-                SceneManager.LoadScene(1); //won game
+                SceneManager.LoadScene(2); //won game
             }
         }
     }
