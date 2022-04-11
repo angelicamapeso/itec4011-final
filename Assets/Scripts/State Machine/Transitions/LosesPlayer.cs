@@ -7,18 +7,27 @@ public class LosesPlayer : Transition
     public bool losesPlayerDebug = false;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
+
         executeTransitionActions += transitionAction;
     }
 
     public override bool isTriggered()
     {
-        return losesPlayerDebug;
+        if (sm != null)
+        {
+            return !sm.enemySight.canSeePlayer();
+        }
+
+        return false;
     }
 
     void transitionAction()
     {
         losesPlayerDebug = false;
+
+        sm.SetLastPlayerInterestPoint();
     }
 }

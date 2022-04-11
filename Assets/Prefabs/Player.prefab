@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8593724401526184258}
   - component: {fileID: 5157663476197421068}
   - component: {fileID: 2338534401073997174}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -155,8 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 364100247ca23664a8768b1b20779f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  minSpeed: 0
   maxSpeed: 0
+  currentSpeed: 0
   lineRenderer: {fileID: 0}
   soundRadius: 0
   maxSoundRadius: 1.5

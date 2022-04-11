@@ -13,4 +13,15 @@ public abstract class State : MonoBehaviour
     public ExitActions executeExitActions;
 
     public Transition[] transitions;
+
+    protected StateMachine sm = null;
+
+    protected void Start()
+    {
+        sm = gameObject.GetComponent<StateMachine>();
+        if (sm == null)
+        {
+            Debug.LogError("No 'StateMachine' script on [" + gameObject.name + "]");
+        }
+    }
 }
