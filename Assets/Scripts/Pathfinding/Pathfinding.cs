@@ -106,7 +106,6 @@ public class Pathfinding : MonoBehaviour
                         }
                     }
                 }
-
                 return finalPath;
             }
         }

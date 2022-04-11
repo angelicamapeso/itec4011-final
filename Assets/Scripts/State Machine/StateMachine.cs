@@ -8,7 +8,7 @@ public class StateMachine : MonoBehaviour
     public State currentState;
 
     public GameObject player = null;
-    public Vector2? lastSeenPlayerPosition = null;
+    public Vector2? lastInterestPoint = null;
     public EnemyMovement enemyMovement = null;
     public EnemyRotation enemyRotation = null;
     public EnemySight enemySight = null;
@@ -80,4 +80,22 @@ public class StateMachine : MonoBehaviour
         }
     }
 
+    public void SetLastInterestPoint()
+    {
+        if (player != null && enemyMovement != null)
+        {
+            Main playerScript = player.GetComponent<Main>();
+            if (playerScript != null)
+            {
+                Vector2 playerPosition = player.transform.position;
+                Vector2 playerDirection = playerScript.GetPlayerDirection();
+
+                float d = Vector2.Distance(playerPosition, transform.position);
+                // Scaled down to avoid from going outside of grid
+                float timeToGetToPlayer = (d / enemyMovement.speed) * 0.5f;
+
+                lastInterestPoint = playerPosition + (playerDirection * timeToGetToPlayer * playerScript.currentSpeed);
+            }
+        }
+    }
 }

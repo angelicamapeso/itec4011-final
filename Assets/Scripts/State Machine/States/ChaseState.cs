@@ -34,8 +34,7 @@ public class ChaseState : State
         // Debug.Log("[" + gameObject.name + "] is currently in Chase state");
         if (sm != null && sm.player != null && sm.enemyMovement != null)
         {
-            List<Node> pathNodes = Pathfinding.FindPath(gameObject.transform.position, sm.player.transform.position);
-            sm.enemyMovement.setPath(pathNodes);
+            sm.enemyMovement.setDestination(sm.player.transform.position);
             sm.enemyMovement.move();
         }
     }
@@ -43,9 +42,5 @@ public class ChaseState : State
     void exitChaseState()
     {
         Debug.Log("[" + gameObject.name + "] is exiting Chase state");
-        if (sm != null)
-        {
-            sm.lastSeenPlayerPosition = sm.player.transform.position;
-        }
     }
 }

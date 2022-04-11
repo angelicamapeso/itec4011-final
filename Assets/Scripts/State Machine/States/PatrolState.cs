@@ -6,7 +6,10 @@ public class PatrolState : State
 {
     public float rotationTime = 1f;
     public float movementSpeed = 5f;
-    public float stopThreshold = 0.2f;
+    public float stopThreshold = 1f;
+
+    public bool hasReachedFirstPatrolPoint = false;
+    private Vector2? firstPatrolPoint = null;
 
     // Start is called before the first frame update
     new void Start()
@@ -21,27 +24,59 @@ public class PatrolState : State
     void enterPatrolState()
     {
         Debug.Log("[" + gameObject.name + "] has entered Patrol state");
-        Debug.Log(sm.enemyMovement);
+
         if (sm != null && sm.enemyMovement != null)
         {
-            sm.enemyMovement.setPathToPatrol();
             sm.enemyMovement.speed = movementSpeed;
             sm.enemyMovement.stopThreshold = stopThreshold;
             sm.enemyMovement.rotationTime = rotationTime;
+
+            firstPatrolPoint = sm.enemyMovement?.patrolPoints?.waypoints?[0]?.position;
+
+            sm.enemyMovement.arrivedAtDestinationEvent += setArrivedAtPatrolPoint;
+            
+            if (firstPatrolPoint != null)
+            {
+                sm.enemyMovement.setDestination((Vector2) firstPatrolPoint);
+            }
+
         }
     }
 
     void patrolStateAction()
     {
         // Debug.Log("[" + gameObject.name + "] is currently in Patrol state");
-        if (sm != null && sm.enemyMovement != null)
+        if (sm != null && sm.enemyMovement != null && firstPatrolPoint != null)
         {
-            sm.enemyMovement.delayedMove();
+            if (!hasReachedFirstPatrolPoint)
+            {
+                sm.enemyMovement.move();
+            } else
+            {
+                sm.enemyMovement.movePatrol();
+            }
         }
     }
 
     void exitPatrolState()
     {
         Debug.Log("[" + gameObject.name + "] is exiting Patrol state");
+        
+        if (sm != null && sm.player != null && sm.enemyMovement != null)
+        {   
+            sm.enemyMovement.arrivedAtDestinationEvent -= setArrivedAtPatrolPoint;
+        }
+
+        hasReachedFirstPatrolPoint = false;
+    }
+
+    void setArrivedAtPatrolPoint()
+    {
+        // Debug.Log("Arrived at First Patrol Point: " + firstPatrolPoint);
+
+        hasReachedFirstPatrolPoint = true;
+        
+        sm.enemyMovement.setPathToPatrol();
+        sm.enemyMovement.arrivedAtDestinationEvent -= setArrivedAtPatrolPoint;
     }
 }

@@ -5,20 +5,25 @@ using UnityEngine;
 public class CompletesInvestigation : Transition
 {
     public bool completeInvestigationDebug = false;
+    
+    public bool hasCompletedInvestigation = false;
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
+
         executeTransitionActions += transitionAction;
     }
 
     public override bool isTriggered()
     {
-        return completeInvestigationDebug;
+        return hasCompletedInvestigation;
     }
 
     void transitionAction()
     {
         completeInvestigationDebug = false;
+        hasCompletedInvestigation = false;
     }
 }

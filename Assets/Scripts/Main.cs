@@ -15,6 +15,8 @@ public class Main : MonoBehaviour
     // increment value per second
     public float incrementSoundBy = 0.5f;
 
+    Vector2 direction = new Vector2(0,0);
+
     Animator animator;
 
     void Start()
@@ -39,12 +41,14 @@ public class Main : MonoBehaviour
             transform.Translate(Vector3.right * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 2);
+            direction.x = 1;
         }
         else if (Input.GetAxisRaw("Horizontal") < 0)
         {
             transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 2);
+            direction.x = -1;
 
         }
 
@@ -53,12 +57,14 @@ public class Main : MonoBehaviour
             transform.Translate(Vector3.up * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 0);
+            direction.y = 1;
         }
         else if (Input.GetAxisRaw("Vertical") < 0)
         {
             transform.Translate(Vector3.down * currentSpeed * Time.deltaTime);
             transform.eulerAngles = new Vector2(0, 0);
             //animator.SetInteger("direction", 1);
+            direction.y = -1;
         }
 
         //acceleration
@@ -134,5 +140,10 @@ public class Main : MonoBehaviour
     void ResetSoundRadius()
     {
         soundRadius = 0;
+    }
+
+    public Vector2 GetPlayerDirection()
+    {
+        return direction.normalized;
     }
 }

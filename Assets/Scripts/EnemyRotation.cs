@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class EnemyRotation : MonoBehaviour
     // PERFORM CALCULATIONS IF TARGET ORIENTATION SET:
     public float? targetOrientation = null;
 
+    public event Action arrivedAtRotation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,7 @@ public class EnemyRotation : MonoBehaviour
         rotation += angularAcceleration * Time.deltaTime;
     }
 
-    float getCurrentOrientation()
+    public float getCurrentOrientation()
     {
         return transform.rotation.eulerAngles.z;
     }
@@ -66,7 +69,7 @@ public class EnemyRotation : MonoBehaviour
         targetOrientation = totalRotation;
     }
 
-    void rotateTowards(float angle)
+    public void rotateTowards(float angle)
     {
         targetOrientation = angle;
     }
@@ -84,6 +87,7 @@ public class EnemyRotation : MonoBehaviour
                 angularAcceleration = 0;
                 setOrientation((float) targetOrientation);
                 targetOrientation = null;
+                arrivedAtRotation?.Invoke();
                 return;
             }
 
