@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5209950423047543939}
   - component: {fileID: 8648219006637964384}
   - component: {fileID: 4031477137677670296}
+  - component: {fileID: -7596200566487956979}
   - component: {fileID: 452523671123253245}
   - component: {fileID: 6599808987160157137}
   - component: {fileID: 9192578061159156096}
@@ -114,6 +115,22 @@ MonoBehaviour:
   rotationTime: 1
   patrolPoints: {fileID: 0}
   currentPath: []
+--- !u!58 &-7596200566487956979
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514258845443847102}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.40638214
 --- !u!114 &452523671123253245
 MonoBehaviour:
   m_ObjectHideFlags: 0
