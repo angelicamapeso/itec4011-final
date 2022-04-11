@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+//concepts for instantiating referenced from the video below
+//https://www.youtube.com/watch?v=E7gmylDS1C4
+
+
+
 public class soundTrailBit : MonoBehaviour
 {
     public GameObject soundTrailBitPrefab;
