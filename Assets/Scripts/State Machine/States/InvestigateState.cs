@@ -42,7 +42,6 @@ public class InvestigateState : State
             sm.enemyMovement.stopThreshold = stopThreshold;
             sm.enemyMovement.rotationTime = rotationTime;
 
-            sm.SetLastInterestPoint();
             sm.enemyMovement.setDestination((Vector2) sm.lastInterestPoint, stopMovingToPoint);
             sm.enemyMovement.arrivedAtDestinationEvent += stopMovingToPoint;
         }

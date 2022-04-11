@@ -187,7 +187,7 @@ MonoBehaviour:
   playerObject: {fileID: 65504554639406026, guid: bf49efb4e7c226044900a6f68cf67f6a,
     type: 3}
   respawnTime: 0.5
-  bitLifeSpan: 0.8
+  bitLifeSpan: 1
 --- !u!4 &90765203
 Transform:
   m_ObjectHideFlags: 0
@@ -1830,7 +1830,7 @@ PrefabInstance:
     - target: {fileID: 514258845443847102, guid: b4f281450518d3e4c982aa5e1285cfa8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4031477137677670296, guid: b4f281450518d3e4c982aa5e1285cfa8,
         type: 3}
@@ -4925,7 +4925,7 @@ PrefabInstance:
     - target: {fileID: 514258845443847102, guid: b4f281450518d3e4c982aa5e1285cfa8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4031477137677670296, guid: b4f281450518d3e4c982aa5e1285cfa8,
         type: 3}
@@ -5793,7 +5793,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2141917844}
   - component: {fileID: 2141917843}
-  m_Layer: 3
+  - component: {fileID: 2141917845}
+  m_Layer: 8
   m_Name: Safe Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5867,6 +5868,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2141917845
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141917842}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &65504555057949326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5933,11 +5960,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 65504554639406026, guid: bf49efb4e7c226044900a6f68cf67f6a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 65504554639406027, guid: bf49efb4e7c226044900a6f68cf67f6a,
         type: 3}

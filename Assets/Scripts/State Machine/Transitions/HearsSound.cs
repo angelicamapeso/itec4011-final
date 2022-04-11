@@ -29,6 +29,8 @@ public class HearsSound : Transition
     void transitionAction()
     {
         hearPlayerDebug = false;
+
+        sm.SetLastPlayerInterestPoint();
     }
 
     bool canHearPlayer()

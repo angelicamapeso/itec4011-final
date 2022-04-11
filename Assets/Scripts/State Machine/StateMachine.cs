@@ -13,6 +13,8 @@ public class StateMachine : MonoBehaviour
     public EnemyRotation enemyRotation = null;
     public EnemySight enemySight = null;
 
+    public List<int> lastFootPrints = null;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +41,8 @@ public class StateMachine : MonoBehaviour
         {
             Debug.LogError("No 'EnemySight' script on [" + gameObject.name + "]");
         }
+
+        lastFootPrints = new List<int>();
     }
 
     void Start()
@@ -80,7 +84,7 @@ public class StateMachine : MonoBehaviour
         }
     }
 
-    public void SetLastInterestPoint()
+    public void SetLastPlayerInterestPoint()
     {
         if (player != null && enemyMovement != null)
         {

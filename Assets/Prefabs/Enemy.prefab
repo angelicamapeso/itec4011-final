@@ -162,6 +162,7 @@ MonoBehaviour:
   enemyMovement: {fileID: 0}
   enemyRotation: {fileID: 0}
   enemySight: {fileID: 0}
+  lastFootPrints: 
 --- !u!114 &8137939670157529467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetState: {fileID: 8042939231613111657}
+  closestVisibleFootprint: {fileID: 0}
   seeFootprintDebug: 0
 --- !u!114 &1053941290506342686
 MonoBehaviour:
@@ -266,8 +268,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transitions:
-  - {fileID: 8137939670157529467}
   - {fileID: 1053941290506342686}
+  - {fileID: 8137939670157529467}
+  - {fileID: 944515637053305393}
+  - {fileID: 8932737625228854792}
   rotationTime: 2
   movementSpeed: 3.5
   stopThreshold: 0.5

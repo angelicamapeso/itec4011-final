@@ -27,5 +27,7 @@ public class LosesPlayer : Transition
     void transitionAction()
     {
         losesPlayerDebug = false;
+
+        sm.SetLastPlayerInterestPoint();
     }
 }
