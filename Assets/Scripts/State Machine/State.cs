@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Code adapted from Algorithms found in:
+* Millington, I. (2019). AI for Games. (3 ed.). CRC Press.
+*/
 public abstract class State : MonoBehaviour
 {
     public delegate void Actions();

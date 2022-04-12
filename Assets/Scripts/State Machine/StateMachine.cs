@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Code adapted from Algorithms found in:
+ * Millington, I. (2019). AI for Games. (3 ed.). CRC Press.
+ */
 public class StateMachine : MonoBehaviour
 {
     public State initialState;
@@ -45,12 +48,18 @@ public class StateMachine : MonoBehaviour
         lastFootPrints = new List<int>();
     }
 
+    /* Code adapted from Algorithms found in:
+     * Millington, I. (2019). AI for Games. (3 ed.). CRC Press.
+     */
     void Start()
     {
         currentState = initialState;
         currentState.executeEntryActions?.Invoke();
     }
 
+    /* Code adapted from Algorithms found in:
+    * Millington, I. (2019). AI for Games. (3 ed.). CRC Press.
+    */
     // Update is called once per frame
     void Update()
     {
