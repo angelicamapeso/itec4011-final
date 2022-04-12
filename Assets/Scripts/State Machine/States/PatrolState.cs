@@ -12,9 +12,9 @@ public class PatrolState : State
     private Vector2? firstPatrolPoint = null;
 
     // Start is called before the first frame update
-    new void Start()
+    new void OnEnable()
     {
-        base.Start(); 
+        base.OnEnable();
 
         executeEntryActions += enterPatrolState;
         executeStateActions += patrolStateAction;
@@ -32,24 +32,21 @@ public class PatrolState : State
             sm.enemyMovement.rotationTime = rotationTime;
 
             firstPatrolPoint = sm.enemyMovement?.patrolPoints?.waypoints?[0]?.position;
-
+            sm.enemyMovement.setDestination((Vector2) firstPatrolPoint, setArrivedAtPatrolPoint);
             sm.enemyMovement.arrivedAtDestinationEvent += setArrivedAtPatrolPoint;
-            
-            if (firstPatrolPoint != null)
-            {
-                sm.enemyMovement.setDestination((Vector2) firstPatrolPoint);
-            }
-
         }
     }
 
     void patrolStateAction()
     {
         // Debug.Log("[" + gameObject.name + "] is currently in Patrol state");
-        if (sm != null && sm.enemyMovement != null && firstPatrolPoint != null)
+        if (sm != null && sm.enemyMovement != null)
         {
             if (!hasReachedFirstPatrolPoint)
             {
+                firstPatrolPoint = sm.enemyMovement?.patrolPoints?.waypoints?[0]?.position;
+                sm.enemyMovement.setDestination((Vector2)firstPatrolPoint);
+                sm.enemyMovement.arrivedAtDestinationEvent += setArrivedAtPatrolPoint;
                 sm.enemyMovement.move();
             } else
             {

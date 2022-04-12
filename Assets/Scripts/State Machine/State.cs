@@ -16,7 +16,7 @@ public abstract class State : MonoBehaviour
 
     protected StateMachine sm = null;
 
-    protected void Start()
+    protected void OnEnable()
     {
         sm = gameObject.GetComponent<StateMachine>();
         if (sm == null)
