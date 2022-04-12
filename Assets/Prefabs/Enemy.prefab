@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -7596200566487956979}
   - component: {fileID: 452523671123253245}
   - component: {fileID: 6599808987160157137}
-  - component: {fileID: 9192578061159156096}
   - component: {fileID: 8137939670157529467}
   - component: {fileID: 944515637053305393}
   - component: {fileID: 3007113451130948899}
@@ -23,6 +22,7 @@ GameObject:
   - component: {fileID: 7318589356067709972}
   - component: {fileID: 8042939231613111657}
   - component: {fileID: 8314586268493601705}
+  - component: {fileID: 9192578061159156096}
   - component: {fileID: 6106514829470596853}
   m_Layer: 0
   m_Name: Enemy
@@ -161,25 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToSee: 4.5
---- !u!114 &9192578061159156096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 514258845443847102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72cc9e4424183624b8793990fbc379ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialState: {fileID: 7318589356067709972}
-  currentState: {fileID: 0}
-  player: {fileID: 0}
-  enemyMovement: {fileID: 0}
-  enemyRotation: {fileID: 0}
-  enemySight: {fileID: 0}
-  lastFootPrints: 
 --- !u!114 &8137939670157529467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +291,25 @@ MonoBehaviour:
   rotationTime: 0.1
   movementSpeed: 3.5
   stopThreshold: 0.5
+--- !u!114 &9192578061159156096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514258845443847102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72cc9e4424183624b8793990fbc379ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialState: {fileID: 7318589356067709972}
+  currentState: {fileID: 0}
+  player: {fileID: 0}
+  enemyMovement: {fileID: 0}
+  enemyRotation: {fileID: 0}
+  enemySight: {fileID: 0}
+  lastFootPrints: 
 --- !u!114 &6106514829470596853
 MonoBehaviour:
   m_ObjectHideFlags: 0

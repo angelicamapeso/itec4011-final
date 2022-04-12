@@ -17,9 +17,9 @@ public class InvestigateState : State
     private CompletesInvestigation completesInvestigationTransition = null;
 
     // Start is called before the first frame update
-    new void Start()
+    new void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
 
         completesInvestigationTransition = gameObject.GetComponent<CompletesInvestigation>();
         if (completesInvestigationTransition == null)

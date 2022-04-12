@@ -9,15 +9,15 @@ public class ChaseState : State
     public float stopThreshold = 1f;
 
     // Start is called before the first frame update
-    new void Start()
+    new void OnEnable()
     {
-        base.Start();
+        base.OnEnable();
 
         executeEntryActions += enterChaseState;
         executeStateActions += chaseStateAction;
         executeExitActions += exitChaseState;
     }
-
+    
     void enterChaseState()
     {
         Debug.Log("[" + gameObject.name + "] has entered Chase state");
